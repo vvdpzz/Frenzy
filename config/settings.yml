@@ -1,0 +1,13 @@
+defaults: &defaults
+  answer_price: 5
+  vote_for_limit: 15
+  vote_against_limit: 125
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

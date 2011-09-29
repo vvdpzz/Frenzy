@@ -6,7 +6,7 @@
     <div class="span12">
       <% @questions.each do |question| %>
         <%= div_for question do %>
-          <h4><%=link_to question.title, question %></h4>
+          <h4><%=link_to question.title, question, :target => :blank %></h4>
         <% end %>
       <% end %>
     </div>

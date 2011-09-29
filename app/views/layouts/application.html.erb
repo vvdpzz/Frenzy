@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Frenzy</title>
+  <title>迷乱</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,22 +10,22 @@
   <div class="topbar" data-dropdown="dropdown">
     <div class="topbar-inner">
       <div class="container">
-        <h3><a href="#">Frenzy</a></h3>
+        <h3><a href="/">迷 乱</a></h3>
         <ul class="nav">
-          <li class="active"><a href="#">Featured</a></li>
-          <li><a href="#">Community</a></li>
+          <li class="active"><a href="/questions">悬赏</a></li>
+          <li><a href="/questions/free">免费</a></li>
         </ul>
         <ul class="nav secondary-nav">
           <ul class="nav">
-            <li><a href="/questions/new">Ask</a></li>
+            <li><a href="/questions/new">提问</a></li>
           </ul>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Account</a>
+            <a href="" class="dropdown-toggle"><%= current_user.username %></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Charge</a></li>
+              <li><%= link_to "个人主页", current_user %></li>
+              <li><a href="#">充值</a></li>
               <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><%= link_to "登出", destroy_user_session_path, :method => :delete %></li>
             </ul>
           </li>
         </ul>

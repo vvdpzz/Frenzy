@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   respond_to :html
+  before_filter :vote_init, :only => [:vote_for, :vote_against]
   
   def index
     respond_with(@questions = Question.paid)
@@ -36,4 +37,30 @@ class QuestionsController < ApplicationController
   def destroy
     
   end
+  
+  def vote_for
+    if current_user.credit >= Settings.vote_for_limit and @voted != true
+      if @voted == nil
+        current_user.vote_for @question
+      else
+        current_user.vote_exclusively_against @question
+      end
+    end
+  end
+  
+  def vote_against
+    if current_user.credit >= Settings.vote_against_limit and @voted != false
+      if @voted == nil
+        current_user.vote_against @question
+      else
+        current_user.vote_exclusively_for @question
+      end
+    end
+  end
+  
+  protected
+    def vote_init
+      @question = Question.select("id").find_by_id(params[:id])
+      @voted = @question.trivalent_voted_by? current_user
+    end
 end
