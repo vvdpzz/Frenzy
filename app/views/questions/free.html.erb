@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="page-header">
+    <h1>免费问题 <small>不积跬步，无以至千里</small></h1>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <% @questions.each do |question| %>
+        <%= div_for question do %>
+          <h4><%=link_to question.title, question %></h4>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

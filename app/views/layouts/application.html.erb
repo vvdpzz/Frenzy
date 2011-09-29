@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frenzy</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="topbar" data-dropdown="dropdown">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><a href="#">Frenzy</a></h3>
+        <ul class="nav">
+          <li class="active"><a href="#">Featured</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+        <ul class="nav secondary-nav">
+          <ul class="nav">
+            <li><a href="/questions/new">Ask</a></li>
+          </ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Account</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Charge</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>
